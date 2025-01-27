@@ -4,7 +4,7 @@ import Image from "next/image"
 import { ArrowRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { smoothScroll } from "@/lib/utils"
-import Link from "next/link"
+
 
 export default function Hero() {
   return (
@@ -25,9 +25,11 @@ export default function Hero() {
             <p className="text-xl mb-8 text-gray-100">
               Descubra o futuro da vida inteligente com conforto e conveniência controlados por voz.
             </p>
-            <Button variant="secondary" size="lg" onClick={(e) => smoothScroll(e)} asChild>
-            </Button>
-           
+            <a href="#recursos" onClick={(e) => { e.preventDefault(); smoothScroll(e); }}>
+              <Button variant="secondary" size="lg" asChild>
+                Saiba Mais
+              </Button>
+            </a>
           </div>
           <div className="md:w-1/2">
             <div className="relative">
