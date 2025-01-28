@@ -37,7 +37,7 @@ export default function Header() {
   return (
     <header
       className={`fixed w-full z-50 transition-all duration-300 ${
-        isScrolled || !isHomePage ? "bg-background shadow-md" : "bg-transparent"
+        isScrolled || !isHomePage ? "bg-purple-500 text-white shadow-md" : "bg-transparent"
       }`}
     >
       <div className="container mx-auto px-4">
@@ -45,7 +45,7 @@ export default function Header() {
           <Link
             href="/"
             className={`text-2xl font-bold transition-colors duration-300 ${
-              isScrolled || !isHomePage ? "text-primary" : "text-white"
+              isScrolled || !isHomePage ? "text-white" : "text-white"
             }`}
           >
             CasaInteligente
@@ -57,7 +57,7 @@ export default function Header() {
                   <Link
                     href={item.href}
                     className={`transition-colors duration-200 ${
-                      isScrolled || !isHomePage ? "text-foreground hover:text-primary" : "text-white hover:text-accent"
+                      isScrolled || !isHomePage ? "text-white hover:text-accent" : "text-white hover:text-accent"
                     }`}
                     onClick={(e) => (isHomePage && item.href.startsWith("/#") ? smoothScroll(e) : null)}
                   >
@@ -72,7 +72,7 @@ export default function Header() {
               <Button
                 variant="ghost"
                 size="icon"
-                className={`md:hidden ${isScrolled || !isHomePage ? "text-foreground" : "text-white"}`}
+                className={`md:hidden ${isScrolled || !isHomePage ? "text-white" : "text-white"}`}
               >
                 <Menu className="h-6 w-6" />
                 <span className="sr-only">Toggle menu</span>
@@ -87,7 +87,7 @@ export default function Header() {
                   <Link
                     key={item.name}
                     href={item.href}
-                    className="text-foreground hover:text-primary transition-colors"
+                      className="text-black hover:text-accent transition-colors"
                     onClick={() => {
                       if (isHomePage && item.href.startsWith("/#")) {
                         smoothScroll({ preventDefault: () => {}, currentTarget: { href: item.href } } as any)
@@ -106,4 +106,3 @@ export default function Header() {
     </header>
   )
 }
-

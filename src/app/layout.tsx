@@ -19,9 +19,9 @@ export default function RootLayout({
   return (
     <html lang="pt-BR" className="scroll-smooth">
       <body className={`${inter.className} antialiased`} suppressHydrationWarning={true}>
-        <Header />
+       
         {children}
-        <Footer />
+       
       </body>
     </html>
   )
