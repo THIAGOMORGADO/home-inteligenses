@@ -52,7 +52,7 @@ export function FormularioContato() {
     const encodedMessage = encodeURIComponent(message.trim());
 
     // Número do WhatsApp
-    const phoneNumber = "+5 11920052992";
+    const phoneNumber = "+5511920052992";
 
     // Monta o link de maneira exata
     const whatsappLink = `https://api.whatsapp.com/send?phone=${phoneNumber}&text=${encodedMessage}`;
