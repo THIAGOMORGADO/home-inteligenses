@@ -34,7 +34,7 @@ export default function Hero() {
           <div className="md:w-1/2">
             <div className="relative">
               <Image
-                src="/placeholder.svg?height=400&width=600"
+                src="/banner2.jpg"
                 alt="Casa inteligente com Alexa"
                 width={600}
                 height={400}
