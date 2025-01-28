@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/button"
 import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
+import { IoLogoWhatsapp } from "react-icons/io";
 
 
 
@@ -31,7 +32,7 @@ type FormData = yup.InferType<typeof schema>
 
 export function FormularioContato() {
   const [isSubmitting, setIsSubmitting] = useState(false)
-  const [submitSuccess, setSubmitSuccess] = useState(false)
+ 
 
   const form = useForm<FormData>({
     resolver: yupResolver(schema),
@@ -44,7 +45,7 @@ export function FormularioContato() {
   })
 
   const onSubmit = (data: FormData) => {
-    setIsSubmitting(true)
+   
     const { nome, email, telefone, descricao } = data;
     const message = `Olá, meu nome é ${nome}. Meu e-mail é ${email}. Meu telefone é ${telefone}. Descrição: ${descricao}.`;
 
@@ -60,25 +61,16 @@ export function FormularioContato() {
     // Abre o WhatsApp em uma nova aba
     window.open(whatsappLink, "_blank");
 
+    window.open(whatsappLink, '_blank');
    
-    setTimeout(() => {
-      console.log(data)
-      setIsSubmitting(false)
-      setSubmitSuccess(true)
       form.reset()
-    }, 2000)
+  
    
   }
 
   return (
     <div className="max-w-md mx-auto">
       <h2 className="text-2xl font-bold mb-6 text-center">Entre em Contato</h2>
-      {submitSuccess ? (
-        <div className="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative" role="alert">
-          <strong className="font-bold">Sucesso!</strong>
-          <span className="block sm:inline"> Sua mensagem foi enviada. Entraremos em contato em breve.</span>
-        </div>
-      ) : (
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
             <FormField
@@ -136,13 +128,14 @@ export function FormularioContato() {
             />
            <div className="flex justify-center">
             <Button type="submit" className="w-[50%] hover:bg-green-500" disabled={isSubmitting}>
-             
+            <IoLogoWhatsapp />
+
               {isSubmitting ? "Enviando..." : "Enviar"}
             </Button>
            </div>
           </form>
         </Form>
-      )}
+   
     </div>
   )
 }
