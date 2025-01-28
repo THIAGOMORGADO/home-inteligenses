@@ -54,14 +54,14 @@ export function FormularioContato() {
     const whatsappLink = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
 
     
-    return whatsappLink;
+   
     setTimeout(() => {
       console.log(data)
       setIsSubmitting(false)
       setSubmitSuccess(true)
       form.reset()
     }, 2000)
-    
+    return whatsappLink;
   }
 
   return (
