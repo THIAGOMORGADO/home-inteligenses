@@ -53,7 +53,7 @@ export function FormularioContato() {
 
     const whatsappLink = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
 
-    
+    console.log(whatsappLink)
    
     setTimeout(() => {
       console.log(data)
@@ -61,7 +61,7 @@ export function FormularioContato() {
       setSubmitSuccess(true)
       form.reset()
     }, 2000)
-    return whatsappLink;
+   
   }
 
   return (
