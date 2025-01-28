@@ -47,16 +47,19 @@ export function FormularioContato() {
     setIsSubmitting(true)
     const { nome, email, telefone, descricao } = data;
     const message = `Olá, meu nome é ${nome}. Meu e-mail é ${email}. Meu telefone é ${telefone}. Descrição: ${descricao}.`;
-    
-    const encodedMessage = encodeURIComponent(message);
-    const phoneNumber = "5511970270208"; // Ensure the phone number is a string
 
-    const whatsappLink = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+    // Codifica a mensagem corretamente
+    const encodedMessage = encodeURIComponent(message.trim());
 
+    // Número do WhatsApp
+    const phoneNumber = "+5 11920052992";
 
+    // Monta o link de maneira exata
+    const whatsappLink = `https://api.whatsapp.com/send?phone=${phoneNumber}&text=${encodedMessage}`;
+
+    // Abre o WhatsApp em uma nova aba
     window.open(whatsappLink, "_blank");
 
-    console.log(whatsappLink)
    
     setTimeout(() => {
       console.log(data)
