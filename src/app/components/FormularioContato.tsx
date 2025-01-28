@@ -9,6 +9,8 @@ import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, For
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 
+import { IoLogoWhatsapp } from "react-icons/io";
+
 const schema = yup
   .object({
     nome: yup.string().required("O nome é obrigatório").min(2, "O nome deve ter pelo menos 2 caracteres"),
@@ -43,13 +45,23 @@ export function FormularioContato() {
 
   const onSubmit = (data: FormData) => {
     setIsSubmitting(true)
-    // Simular envio do formulário
+    const { nome, email, telefone, descricao } = data;
+    const message = `Olá, meu nome é ${nome}. Meu e-mail é ${email}. Meu telefone é ${telefone}. Descrição: ${descricao}.`;
+    
+    const encodedMessage = encodeURIComponent(message);
+    const phoneNumber = "5511970270208"; // Ensure the phone number is a string
+
+    const whatsappLink = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+
+    
+    return whatsappLink;
     setTimeout(() => {
       console.log(data)
       setIsSubmitting(false)
       setSubmitSuccess(true)
       form.reset()
     }, 2000)
+    
   }
 
   return (
@@ -116,9 +128,12 @@ export function FormularioContato() {
                 </FormItem>
               )}
             />
-            <Button type="submit" className="w-full" disabled={isSubmitting}>
+           <div className="flex justify-center">
+            <Button type="submit" className="w-[50%] hover:bg-green-500" disabled={isSubmitting}>
+              <IoLogoWhatsapp size={20} className="text-white"/>
               {isSubmitting ? "Enviando..." : "Enviar"}
             </Button>
+           </div>
           </form>
         </Form>
       )}
