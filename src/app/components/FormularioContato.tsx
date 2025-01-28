@@ -9,7 +9,7 @@ import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, For
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 
-import { IoLogoWhatsapp } from "react-icons/io";
+
 
 const schema = yup
   .object({
@@ -130,7 +130,7 @@ export function FormularioContato() {
             />
            <div className="flex justify-center">
             <Button type="submit" className="w-[50%] hover:bg-green-500" disabled={isSubmitting}>
-              <IoLogoWhatsapp size={20} className="text-white"/>
+             
               {isSubmitting ? "Enviando..." : "Enviar"}
             </Button>
            </div>
