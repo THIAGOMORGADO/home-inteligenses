@@ -2,13 +2,17 @@
 
 import { useState, useEffect } from "react"
 import Link from "next/link"
-import { Menu } from "lucide-react"
+import { usePathname } from "next/navigation"
+import { Menu, X } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
 import { smoothScroll } from "@/lib/utils"
-
+import { DialogTitle } from "@/components/ui/dialog"
+import { VisuallyHidden } from "@/components/ui/visually-hidden"
+// Removed VisuallyHidden import due to the lint error
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false)
+  const pathname = usePathname()
 
   useEffect(() => {
     const handleScroll = () => {
@@ -21,12 +25,19 @@ export default function Header() {
     }
   }, [])
 
-  const navItems = ["Recursos", "Como Funciona", "Benefícios"]
+  const navItems = [
+    { name: "Recursos", href: "/#recursos" },
+    { name: "Como Funciona", href: "/#como-funciona" },
+    { name: "Benefícios", href: "/#beneficios" },
+    { name: "Nossos Trabalhos", href: "/nossos-trabalhos" },
+  ]
+
+  const isHomePage = pathname === "/"
 
   return (
     <header
       className={`fixed w-full z-50 transition-all duration-300 ${
-        isScrolled ? "bg-background shadow-md" : "bg-transparent"
+        isScrolled || !isHomePage ? "bg-background shadow-md" : "bg-transparent"
       }`}
     >
       <div className="container mx-auto px-4">
@@ -34,7 +45,7 @@ export default function Header() {
           <Link
             href="/"
             className={`text-2xl font-bold transition-colors duration-300 ${
-              isScrolled ? "text-primary" : "text-white"
+              isScrolled || !isHomePage ? "text-primary" : "text-white"
             }`}
           >
             CasaInteligente
@@ -42,15 +53,15 @@ export default function Header() {
           <nav className="hidden md:block">
             <ul className="flex space-x-6">
               {navItems.map((item) => (
-                <li key={item}>
+                <li key={item.name}>
                   <Link
-                    href={`#${item.toLowerCase().replace(" ", "-")}`}
+                    href={item.href}
                     className={`transition-colors duration-200 ${
-                      isScrolled ? "text-foreground hover:text-primary" : "text-white hover:text-accent"
+                      isScrolled || !isHomePage ? "text-foreground hover:text-primary" : "text-white hover:text-accent"
                     }`}
-                    onClick={(e) => smoothScroll(e)}
+                    onClick={(e) => (isHomePage && item.href.startsWith("/#") ? smoothScroll(e) : null)}
                   >
-                    {item}
+                    {item.name}
                   </Link>
                 </li>
               ))}
@@ -61,25 +72,30 @@ export default function Header() {
               <Button
                 variant="ghost"
                 size="icon"
-                className={`md:hidden ${isScrolled ? "text-foreground" : "text-white"}`}
+                className={`md:hidden ${isScrolled || !isHomePage ? "text-foreground" : "text-white"}`}
               >
                 <Menu className="h-6 w-6" />
                 <span className="sr-only">Toggle menu</span>
               </Button>
             </SheetTrigger>
             <SheetContent side="right">
+              <DialogTitle>
+                <VisuallyHidden>Menu</VisuallyHidden>
+              </DialogTitle>
               <nav className="flex flex-col space-y-4 mt-6">
                 {navItems.map((item) => (
                   <Link
-                    key={item}
-                    href={`#${item.toLowerCase().replace(" ", "-")}`}
+                    key={item.name}
+                    href={item.href}
                     className="text-foreground hover:text-primary transition-colors"
-                    onClick={(e) => {
-                      smoothScroll(e)
+                    onClick={() => {
+                      if (isHomePage && item.href.startsWith("/#")) {
+                        smoothScroll({ preventDefault: () => {}, currentTarget: { href: item.href } } as any)
+                      }
                       document.body.classList.remove("overflow-hidden")
                     }}
                   >
-                    {item}
+                    {item.name}
                   </Link>
                 ))}
               </nav>

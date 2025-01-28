@@ -1,7 +1,7 @@
 'use client'
-import React from 'react';
+
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Avatar, AvatarFallback } from "@/components/ui/avatar"
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 
 const testimonials = [
   {
@@ -38,7 +38,7 @@ export default function Testimonials() {
                 </div>
               </CardHeader>
               <CardContent>
-                <p>&quot;{testimonial.comment}&quot;</p>
+                <p>"{testimonial.comment}"</p>
               </CardContent>
             </Card>
           ))}

@@ -19,6 +19,10 @@ type CarouselProps = {
   plugins?: CarouselPlugin
   orientation?: "horizontal" | "vertical"
   setApi?: (api: CarouselApi) => void
+  autoPlay?: boolean
+  interval?: number
+  showArrows?: boolean
+  showIndicators?: boolean
 }
 
 type CarouselContextProps = {
@@ -54,6 +58,10 @@ const Carousel = React.forwardRef<
       plugins,
       className,
       children,
+      autoPlay = false,
+      interval = 3000,
+      showArrows = true,
+      showIndicators = true,
       ...props
     },
     ref
@@ -62,11 +70,13 @@ const Carousel = React.forwardRef<
       {
         ...opts,
         axis: orientation === "horizontal" ? "x" : "y",
+        loop: true,
       },
       plugins
     )
     const [canScrollPrev, setCanScrollPrev] = React.useState(false)
     const [canScrollNext, setCanScrollNext] = React.useState(false)
+    const [currentIndex, setCurrentIndex] = React.useState(0)
 
     const onSelect = React.useCallback((api: CarouselApi) => {
       if (!api) {
@@ -75,6 +85,7 @@ const Carousel = React.forwardRef<
 
       setCanScrollPrev(api.canScrollPrev())
       setCanScrollNext(api.canScrollNext())
+      setCurrentIndex(api.selectedScrollSnap())
     }, [])
 
     const scrollPrev = React.useCallback(() => {
@@ -120,6 +131,15 @@ const Carousel = React.forwardRef<
       }
     }, [api, onSelect])
 
+    React.useEffect(() => {
+      if (autoPlay) {
+        const play = setInterval(() => {
+          api?.scrollNext()
+        }, interval)
+        return () => clearInterval(play)
+      }
+    }, [api, autoPlay, interval])
+
     return (
       <CarouselContext.Provider
         value={{
@@ -142,7 +162,52 @@ const Carousel = React.forwardRef<
           aria-roledescription="carousel"
           {...props}
         >
-          {children}
+          <div ref={carouselRef} className="overflow-hidden">
+            <div className="flex">
+              {React.Children.map(children, (child) => (
+                <div className="min-w-full">{child}</div>
+              ))}
+            </div>
+          </div>
+          {showArrows && (
+            <>
+              <Button
+                onClick={scrollPrev}
+                className={cn(
+                  "absolute left-2 top-1/2 transform -translate-y-1/2",
+                  orientation === "horizontal"
+                    ? "-left-12 top-1/2 -translate-y-1/2"
+                    : "-top-12 left-1/2 -translate-x-1/2 rotate-90"
+                )}
+                disabled={!canScrollPrev}
+              >
+                <ArrowLeft className="h-4 w-4" />
+              </Button>
+              <Button
+                onClick={scrollNext}
+                className={cn(
+                  "absolute right-2 top-1/2 transform -translate-y-1/2",
+                  orientation === "horizontal"
+                    ? "-right-12 top-1/2 -translate-y-1/2"
+                    : "-bottom-12 left-1/2 -translate-x-1/2 rotate-90"
+                )}
+                disabled={!canScrollNext}
+              >
+                <ArrowRight className="h-4 w-4" />
+              </Button>
+            </>
+          )}
+          {showIndicators && (
+            <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2">
+              {React.Children.map(children, (_, index) => (
+                <button
+                  key={index}
+                  className={cn("w-2 h-2 rounded-full", currentIndex === index ? "bg-white" : "bg-white/50")}
+                  onClick={() => api?.scrollTo(index)}
+                />
+              ))}
+            </div>
+          )}
         </div>
       </CarouselContext.Provider>
     )
