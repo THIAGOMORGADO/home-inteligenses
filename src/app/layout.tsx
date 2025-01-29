@@ -13,9 +13,10 @@ export const metadata: Metadata = {
   openGraph: {
     title: "CasaInteligente - Transforme Sua Casa com Alexa",
     description: "Descubra o futuro da vida inteligente com conforto e conveniência controlados por voz.",
-    url: "https://www.casainteligente.com", // URL do seu site
+
+    url: "https://home-inteligenses.vercel.app/assets/Logo.png",
     images: [
-      "/src/assets/Logo.png", // URL da imagem para compartilhamento
+      "/Logo.png", // URL da imagem para compartilhamento
     ],
     type: "website",
   },
@@ -24,7 +25,7 @@ export const metadata: Metadata = {
     title: "CasaInteligente - Transforme Sua Casa com Alexa",
     description: "Descubra o futuro da vida inteligente com conforto e conveniência controlados por voz.",
     images: [
-    "/src/assets/Logo.png", // URL da imagem para compartilhamento
+    "/Logo.png", // URL da imagem para compartilhamento
     ],
   },
 }
