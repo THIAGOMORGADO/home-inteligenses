@@ -15,8 +15,8 @@ export const metadata: Metadata = {
     url: "https://home-inteligenses.vercel.app",
     images: [
       {
+        
         url: "https://home-inteligenses.vercel.app/Logo.png",
-        secure_url: "https://home-inteligenses.vercel.app/Logo.png",
         width: 1200,
         height: 630,
         alt: "Casa Inteligente - Logo",
