@@ -6,7 +6,7 @@ import Footer from "./components/Footer"
 
 const inter = Inter({ subsets: ["latin"] })
 
-export const metadata = {
+export const metadata: Metadata = {
   title: "CasaInteligente - Transforme Sua Casa com Alexa",
   description: "Descubra o futuro da vida inteligente com conforto e conveniência controlados por voz.",
   openGraph: {
@@ -15,11 +15,10 @@ export const metadata = {
     url: "https://home-inteligenses.vercel.app",
     images: [
       {
-        url: "https://home-inteligenses.vercel.app/Logo.png",
-        secure_url: "https://home-inteligenses.vercel.app/Logo.png",
+        url: "https://dev-burger-eight.vercel.app/assets/hamb-1.png",
         width: 1200,
         height: 630,
-        alt: "Casa Inteligente - Logo",
+        alt: "Delicious Burger",
       },
     ],
     type: "website",
@@ -28,7 +27,7 @@ export const metadata = {
     card: "summary_large_image",
     title: "CasaInteligente - Transforme Sua Casa com Alexa",
     description: "Descubra o futuro da vida inteligente com conforto e conveniência controlados por voz.",
-    images: ["https://home-inteligenses.vercel.app/Logo.png"],
+    images: ["https://dev-burger-eight.vercel.app/assets/hamb-1.png"],
   },
 };
 
