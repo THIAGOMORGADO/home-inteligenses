@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     url: "https://home-inteligenses.vercel.app",
     images: [
       {
-        url: "https://home-inteligenses.vercel.app/Logo.png",
+        url: "/Logo.png",
         width: 1200,
         height: 630,
         alt: "Casa Inteligente - Logo",
@@ -27,7 +27,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "CasaInteligente - Transforme Sua Casa com Alexa",
     description: "Descubra o futuro da vida inteligente com conforto e conveniência controlados por voz.",
-    images: ["https://home-inteligenses.vercel.app/Logo.png"],
+    images: ["/Logo.png"],
   },
 };
 
