@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     url: "https://home-inteligenses.vercel.app",
     images: [
       {
-        url: "https://dev-burger-eight.vercel.app/assets/hamb-1.png",
+        url: "https://home-inteligenses.vercel.app/src/assets/Logo.jpg",
         width: 1200,
         height: 630,
         alt: "Delicious Burger",
@@ -27,7 +27,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "CasaInteligente - Transforme Sua Casa com Alexa",
     description: "Descubra o futuro da vida inteligente com conforto e conveniência controlados por voz.",
-    images: ["https://dev-burger-eight.vercel.app/assets/hamb-1.png"],
+    images: ["https://home-inteligenses.vercel.app/src/assets/Logo.jpg"],
   },
 };
 
