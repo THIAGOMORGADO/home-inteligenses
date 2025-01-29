@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     description: "Descubra o futuro da vida inteligente com conforto e conveniência controlados por voz.",
     url: "https://www.casainteligente.com", // URL do seu site
     images: [
-      "https://www.casainteligente.com/imagem-compartilhamento.jpg", // URL da imagem para compartilhamento
+      "/Logo.jpg", // URL da imagem para compartilhamento
     ],
     type: "website",
   },
@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     title: "CasaInteligente - Transforme Sua Casa com Alexa",
     description: "Descubra o futuro da vida inteligente com conforto e conveniência controlados por voz.",
     images: [
-      "https://www.casainteligente.com/imagem-compartilhamento.jpg", // URL da imagem para compartilhamento
+      "/Logo.jpg", // URL da imagem para compartilhamento
     ],
   },
 }
