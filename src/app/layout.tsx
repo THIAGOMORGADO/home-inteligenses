@@ -13,9 +13,9 @@ export const metadata: Metadata = {
   openGraph: {
     title: "CasaInteligente - Transforme Sua Casa com Alexa",
     description: "Descubra o futuro da vida inteligente com conforto e conveniência controlados por voz.",
-    url: "https://www.casainteligente.com", // URL do seu site
+    url: "https://www.casainteligente.com",
     images: [
-      "/Logo.png", // URL da imagem para compartilhamento
+      "https://www.casainteligente.com/Logo.png", // URL absoluta da imagem
     ],
     type: "website",
   },
@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     title: "CasaInteligente - Transforme Sua Casa com Alexa",
     description: "Descubra o futuro da vida inteligente com conforto e conveniência controlados por voz.",
     images: [
-     "/Logo.png", // URL da imagem para compartilhamento
+      "https://www.casainteligente.com/Logo.png", // URL absoluta da imagem
     ],
   },
 }
