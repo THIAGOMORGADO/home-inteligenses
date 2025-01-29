@@ -6,17 +6,21 @@ import Footer from "./components/Footer"
 
 const inter = Inter({ subsets: ["latin"] })
 
-export const metadata: Metadata = {
+export const metadata = {
   title: "CasaInteligente - Transforme Sua Casa com Alexa",
   description: "Descubra o futuro da vida inteligente com conforto e conveniência controlados por voz.",
-  keywords: "Casa Inteligente, Alexa, Automação, Tecnologia, Conforto, Conveniência",
   openGraph: {
     title: "CasaInteligente - Transforme Sua Casa com Alexa",
     description: "Descubra o futuro da vida inteligente com conforto e conveniência controlados por voz.",
-
-    url: "https://home-inteligenses.vercel.app/assets/Logo.png",
+    url: "https://home-inteligenses.vercel.app",
     images: [
-      "/Logo.png", // URL da imagem para compartilhamento
+      {
+        url: "https://home-inteligenses.vercel.app/Logo.png",
+        secure_url: "https://home-inteligenses.vercel.app/Logo.png",
+        width: 1200,
+        height: 630,
+        alt: "Casa Inteligente - Logo",
+      },
     ],
     type: "website",
   },
@@ -24,11 +28,10 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "CasaInteligente - Transforme Sua Casa com Alexa",
     description: "Descubra o futuro da vida inteligente com conforto e conveniência controlados por voz.",
-    images: [
-    "/Logo.png", // URL da imagem para compartilhamento
-    ],
+    images: ["https://home-inteligenses.vercel.app/Logo.png"],
   },
-}
+};
+
 
 export default function RootLayout({
   children,
